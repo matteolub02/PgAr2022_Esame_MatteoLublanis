@@ -29,6 +29,12 @@ public class MyMenu
 	stampaMenu();
 	return InputDati.leggiIntero(richiesta_inserimento, 0, voci.length);	 
   }
+  
+  public int scegliSuMappa ()
+  {
+    stampaMenuScelteSuMappa();
+	return InputDati.leggiChar(richiesta_inserimento);	 
+  }
 		
   public void stampaMenu ()
   {
@@ -46,15 +52,9 @@ public class MyMenu
   {
 
     for (int i=0; i<voci.length; i++)
-    	/*
-    	 * 1) Apri inventario
-    	 * 2) Vai avanti
-    	 * 3) Vai indietro
-    	 * 4) Vai a sinistra
-    	 * 5) Vai a destra
-    	 */
+
 	 {
-	  System.out.println( (i+1) + "\t" + voci[i]);
+	  if (i+ 1 == 1)System.out.println( (i+1) + "\t" + voci[i]);
 	  if (i+1> 1) {
 		  if (i+1 == 2)  System.out.println( "W) \t" + voci[i]);
 		  if (i+1 == 3)  System.out.println( "S) \t" + voci[i]);
@@ -67,21 +67,6 @@ public class MyMenu
     System.out.println();
   }
   
-  public void stampaInventarioEScegliCosaUsare ()
-  {
-
-    for (int i=0; i<voci.length; i++)
-    	/*
-    	 * 1) Usa item
-    	 * 0) Esci
-    	 */
-	 {
-	  System.out.println( (i+1) + "\t" + voci[i]);
-	 }
-    System.out.println();
-	System.out.println(VOCE_USCITA);
-    System.out.println();
-  }
 		
 }
 

@@ -3,6 +3,7 @@ package dijikstra;
 import java.util.LinkedList;
 
 public class Livello {
+	
 	private LinkedList<Stanza> stanze;
 	private int stanzaAttuale = 0;
 	

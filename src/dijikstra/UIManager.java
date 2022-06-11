@@ -46,8 +46,8 @@ public class UIManager {
 				posizioneGiocatoreSuCesta = partita.getLivelloAttuale().getStanzaAttuale().posizioneDiGiocatore();
 				tmp = entita;
 			}
-		switch (menuScelte.scegli()) {
-			case 1:
+		switch (menuScelte.scegliSuMappa()) {
+			case '1':
 				if (partita.getLivelloAttuale().getStanzaAttuale().getGiocatore().stampaInventario()) {
 					MyMenu menuScelteInventario = new MyMenu("", SCELTEINVENTARIO, "Scegli cosa fare:");
 					switch (menuScelteInventario.scegli()) {
@@ -60,23 +60,23 @@ public class UIManager {
 					}
 				}
 				break;
-			case 2:
+			case 'W':
 				entita = partita.movimento(AVANTI);
 				risultatoSpostamento = partita.checkEntita(entita);
 				break;
-			case 3:
+			case 'S':
 				entita = partita.movimento(INDIETRO);
 				risultatoSpostamento = partita.checkEntita(entita);
 				break;
-			case 4:
+			case 'A':
 				entita = partita.movimento(SINISTRA);
 				risultatoSpostamento = partita.checkEntita(entita);
 				break;
-			case 5:
+			case 'D':
 				entita =partita.movimento(DESTRA);
 				risultatoSpostamento = partita.checkEntita(entita);
 				break;
-			case 0:
+			case '0':
 				finito = true;
 				break;
 			}
