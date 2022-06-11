@@ -1,5 +1,11 @@
 package dijikstra;
 
+/**
+ * @author Matteo Lublanis
+ * Classe Stanza, ogni livello è costituito dalle 5 alle 7 stanze.
+ * Contiene il giocatore, tutte le entità.
+ *
+ */
 public class Stanza {
 	private Entita[][] stanza;
 	private Giocatore giocatore;

@@ -2,6 +2,11 @@ package dijikstra;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * @author Matteo Lublanis
+ * Invia messaggi riguardanti lo stato del gioco
+ *
+ */
 public class UIManager {
 	
 	private static final String[] MODALITA = {"Casual", "Storia"};
