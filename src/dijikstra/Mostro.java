@@ -10,10 +10,10 @@ public class Mostro extends EsseriViventi{
 		return armaMostro;
 	}
 
-	public Mostro(Item arma) {
+	public Mostro() {
 		super();
-		setItemInMano(arma);
-		armaMostro = (Arma)arma;
+		setItemInMano(Equipment.ritornaArmaCasuale());
+		armaMostro = Equipment.ritornaArmaCasuale();
 		Random rand = new Random();
 		setVita(rand.nextInt(15, 25));
 		setNome(Utils.permutazioniDijikstra());

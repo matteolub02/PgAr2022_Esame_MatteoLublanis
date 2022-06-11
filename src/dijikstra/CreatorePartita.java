@@ -49,7 +49,7 @@ public class CreatorePartita {
 		int numeroMostri = rand.nextInt(1, 5);
 
 		for (int i = 0; i < numeroMostri; i++) {
-			Mostro mostro = new Mostro(Equipment.ritornaArmaCasuale());
+			Mostro mostro = new Mostro();
 			finito = false;
 			do {
 				int riga = rand.nextInt(0, SIZE_DEFAULT), colonna = rand.nextInt(0, SIZE_DEFAULT);
@@ -110,7 +110,7 @@ public class CreatorePartita {
 		int numeroMostri = rand.nextInt(1, 5);
 		
 		for (int i = 0; i < numeroMostri; i++) {
-			Mostro mostro = new Mostro(Equipment.ritornaArmaCasuale());
+			Mostro mostro = new Mostro();
 			finito = false;
 			do {
 				int riga = rand.nextInt(0, size_righe), colonna = rand.nextInt(0, size_colonne);
@@ -173,7 +173,7 @@ public class CreatorePartita {
 		int numeroMostri = rand.nextInt(1, 5);
 		
 		for (int i = 0; i < numeroMostri; i++) {
-			Mostro mostro = new Mostro(Equipment.ritornaArmaCasuale());
+			Mostro mostro = new Mostro();
 			finito = false;
 			do {
 				int riga = rand.nextInt(0, SIZE_DEFAULT), colonna = rand.nextInt(0, SIZE_DEFAULT);
