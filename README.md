@@ -2,7 +2,6 @@
 ## Matteo Lublanis - 736418
 
 | | |
-| -------------- | --------------- |
 | Nome | ** < Matteo >** |
 | Cognome | ** < Lublanis >** |
 | Matricola | ** < 736418 >** |
