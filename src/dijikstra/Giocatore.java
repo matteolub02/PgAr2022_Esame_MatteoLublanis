@@ -24,10 +24,10 @@ public class Giocatore extends EsseriViventi{ //Rappresenta il player, nome di d
 				+ "\nOggetto in mano: " + getItemInMano().getStringaDescrittiva() + "\n-------");
 	}
 	
-	public boolean aggiungiAInventario (Item item) {
+	public boolean aggiungiAInventario (Item item) { //Aggiungi a inventario
 		if (inventario.size() < MAX_ITEM) {
 			if (inventario.size() == 0) {
-				if (item.simboloItem() == 'A') {
+				if (item.simboloItem() == 'A') { //se è una spada viene automaticamente sostituita ai pugni
 					setItemInMano(item);
 					inventario.add(item);
 				}
@@ -39,12 +39,12 @@ public class Giocatore extends EsseriViventi{ //Rappresenta il player, nome di d
 		else return false;
 	}
 	
-	public void rompiScudo (Scudo scudo) {
+	public void rompiScudo (Scudo scudo) { //Rompe scudo quando prende troppi danni
 		inventario.remove(scudo);
 		setItemInMano(pugni);
 	}
 	
-	public void usaItem(int numItem) {
+	public void usaItem(int numItem) { //Usa item in base al char di controllo
 		if (numItem > inventario.size() - 1) {
 			System.out.println("Non hai così tanti item!");
 			return;
@@ -62,12 +62,12 @@ public class Giocatore extends EsseriViventi{ //Rappresenta il player, nome di d
 			return;
 		}
 	}
-	public void usaPozione() {
+	public void usaPozione() { //Usa pozione
 		if (getVita() + 10 < 20) setVita(getVita() + 10);
 		else setVita(20);
 	}
 	
-	public boolean stampaInventario() {
+	public boolean stampaInventario() { //stampa item nell'inventario
 		if (inventario.size() > 0) {
 			for (Item e : inventario) System.out.print(e.getStringaDescrittiva() + " - ");
 			System.out.println();
@@ -77,7 +77,7 @@ public class Giocatore extends EsseriViventi{ //Rappresenta il player, nome di d
 		return false;
 	}
 	
-	public void riceviDanno(int danno) {
+	public void riceviDanno(int danno) { //Diminuisce vita del giocatore in base all'item attivo
 		if (getItemInMano().simboloItem() == 'S') {
 			Scudo scudo = (Scudo)getItemInMano();
 			scudo.riceviDanno(danno);
@@ -91,7 +91,7 @@ public class Giocatore extends EsseriViventi{ //Rappresenta il player, nome di d
 		else setVita(getVita() - danno);
 	}
 	
-	public ArrayList<Item> getInventario() {
+	public ArrayList<Item> getInventario() { //Ritorna inventario
 		return inventario;
 	}
 	

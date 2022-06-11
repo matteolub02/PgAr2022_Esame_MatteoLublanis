@@ -26,7 +26,7 @@ public class Partita {
 		this.mappa = mappa;
 	}
 	
-	public Entita movimento (int verso) {
+	public Entita movimento (int verso) { //In base all'input controlla se si può spostare il giocatore
 		int[] posizioneGiocatore = getLivelloAttuale().getStanzaAttuale().posizioneDiGiocatore();
 		switch (verso) {
 		case 1:
@@ -49,9 +49,9 @@ public class Partita {
 		return new Vuoto();
 	}
 	
-	public int checkEntita(Entita entita) {
+	public int checkEntita(Entita entita) { //Ritorna entità da salvare come tmp per evitare che scompaia dopo il passaggio del player
 		switch (entita.charSimbolo()) {
-		case 'C':
+		case 'C': //CHEST
 			Item item = ((Chest) entita).chestOpening();
 			if (InputDati.yesOrNo("Hai trovato una chest! Vuoi aprirla?")) {
 				System.out.println("Item trovato: " + item.getStringaDescrittiva());
@@ -67,16 +67,16 @@ public class Partita {
 				return CASO_PLAYER_CHEST_NON_APERTA_O_PASSAGGIO;
 			}
 			break;
-		case 'M':
+		case 'M': //MOSTRO
 			if (faseLotta((Mostro)entita)) {
 				return UCCISIONE_MOSTRO;
 			}
 			else {
 				return CASO_MORTE_CONTRO_MOSTRO;
 			}
-		case 'K':
+		case 'K': //KIBO
 			return TROVATA_KIBO;
-		case '-':
+		case '-': //PASSAGGIO
 			Passaggio passaggio = (Passaggio)entita;
 			if (passaggio.portaAvanti()) {
 				if (getLivelloAttuale().vaAvantiStanza()) {
@@ -90,7 +90,7 @@ public class Partita {
 				}
 				else return CASO_PLAYER_CHEST_NON_APERTA_O_PASSAGGIO;
 			}
-		case 't':
+		case 't': //SCALE SCESA
 			if (livelloAttuale > 0) {
 					getLivelloAttuale().getStanzaAttuale().setPosizione(CreatorePartita.RIGA_SCALE, CreatorePartita.COLONNA_SCALE, new ScaleScesa());
 					getLivelloAttuale().getStanzaAttuale().spostaGiocatore(CreatorePartita.RIGA_SCALE+1, CreatorePartita.COLONNA_SCALE+1);
@@ -102,7 +102,7 @@ public class Partita {
 				System.out.println("Non ci sono livelli sottostanti!");
 				return CASO_PLAYER_CHEST_NON_APERTA_O_PASSAGGIO;
 			}
-		case 'T':
+		case 'T': //SCALE SALITA
 			if (livelloAttuale + 1 < CreatorePartita.LIVELLO_FINALE) {
 					if (getGiocatore().isBattutoMiniBoss()) {
 						getLivelloAttuale().getStanzaAttuale().setPosizione(CreatorePartita.RIGA_SCALE, CreatorePartita.COLONNA_SCALE, new ScaleSalita());
@@ -152,14 +152,14 @@ public class Partita {
 		this.livelloAttuale = livelloAttuale;
 	}
 	
-	public boolean faseLotta(Mostro mostro) {
+	public boolean faseLotta(Mostro mostro) { //GESTISCE LOTTA
 		int turno = 0; //0 giocatore, 1 mostro
 		boolean finito = false;
 		boolean isMiniboss = false;
 		if (mostro.getVita() == 30) isMiniboss = true; 
 		do {
 			switch (turno) {
-			case 0:
+			case 0: //GIOCATORE
 				System.out.println(getGiocatore().getNome() + " colpisce " + mostro.getNome()  + " con " + (getGiocatore().getItemInMano()).getStringaDescrittiva());
 				mostro.riceviDanno(Utils.danno(getGiocatore().getAtk(), getGiocatore().getAtk(), getGiocatore().getPotenzaItemInMano()));
 				if (mostro.getVita() <= 0) {
@@ -168,7 +168,7 @@ public class Partita {
 				}
 				turno = 1;
 				break;
-			case 1:
+			case 1: //MOSTRO
 				System.out.println(mostro.getNome()  + " colpisce " + getGiocatore().getNome()  + " con " + (mostro.getItemInMano()).getStringaDescrittiva());
 				getGiocatore().riceviDanno(Utils.danno(mostro.getAtk(), mostro.getDef(), mostro.getArmaMostro().getPotenza()));
 				if (getGiocatore().getVita() <= 0) {

@@ -6,7 +6,7 @@ public class Mostro extends EsseriViventi{
 	
 	Arma armaMostro;
 	
-	public Arma getArmaMostro() {
+	public Arma getArmaMostro() { 
 		return armaMostro;
 	}
 
