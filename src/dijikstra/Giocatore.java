@@ -2,7 +2,7 @@ package dijikstra;
 
 import java.util.ArrayList;
 
-public class Giocatore extends EsseriViventi{
+public class Giocatore extends EsseriViventi{ //Rappresenta il player, nome di default Astar
 	
 	private final static int MAX_ITEM = 6;
 	private ArrayList<Item> inventario = new ArrayList<Item>() ;

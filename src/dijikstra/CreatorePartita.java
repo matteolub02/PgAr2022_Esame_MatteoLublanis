@@ -3,7 +3,7 @@ package dijikstra;
 import java.util.LinkedList;
 import java.util.Random;
 
-public class CreatorePartita {
+public class CreatorePartita { //Classe utile per creare una nuova partita
 	public static final int LIVELLO_FINALE = 4;
 	private final static int SIZE_DEFAULT = 15;
 	public final static int RIGA_SCALE = 7, COLONNA_SCALE = 10;

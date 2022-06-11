@@ -1,6 +1,6 @@
 package dijikstra;
 
-public class Item {
+public class Item { //SPADA, SCUDO, POZIONE
 	private String stringaDescrittiva;
 	
 	public Item(String stringaDescrittiva) {

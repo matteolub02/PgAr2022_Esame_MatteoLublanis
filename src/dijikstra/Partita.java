@@ -2,6 +2,12 @@ package dijikstra;
 
 import java.util.LinkedList;
 
+/**
+ * @author Matteo Lublanis
+ * Partita, gestisce lotta, movimento
+ * 
+ *
+ */
 public class Partita {
 	
 	private static final int CASO_MORTE_CONTRO_MOSTRO = 2;

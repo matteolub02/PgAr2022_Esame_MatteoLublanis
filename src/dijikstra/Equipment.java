@@ -3,7 +3,7 @@ package dijikstra;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Equipment {
+public class Equipment { //Contiene tutti gli item disponibili del gioco
 	
 	private static ArrayList<Item> equipment = new ArrayList<>();
 	

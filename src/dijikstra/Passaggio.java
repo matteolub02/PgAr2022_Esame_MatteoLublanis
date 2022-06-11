@@ -1,6 +1,6 @@
 package dijikstra;
 
-public abstract class Passaggio implements Entita {
+public abstract class Passaggio implements Entita { //Corridoi tra classi
 
 	public char charSimbolo() {
 		return '-';
