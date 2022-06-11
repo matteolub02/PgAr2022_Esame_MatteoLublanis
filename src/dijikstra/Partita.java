@@ -86,6 +86,8 @@ public class Partita {
 			}
 		case 't':
 			if (livelloAttuale > 0) {
+					getLivelloAttuale().getStanzaAttuale().setPosizione(CreatorePartita.RIGA_SCALE, CreatorePartita.COLONNA_SCALE, new ScaleScesa());
+					getLivelloAttuale().getStanzaAttuale().spostaGiocatore(CreatorePartita.RIGA_SCALE+1, CreatorePartita.COLONNA_SCALE+1);
 					livelloAttuale -= 1;
 					System.out.println("Sei sceso di livello!");
 					return CASO_DEFAULT;
@@ -97,9 +99,10 @@ public class Partita {
 		case 'T':
 			if (livelloAttuale + 1 < CreatorePartita.LIVELLO_FINALE) {
 					if (getGiocatore().isBattutoMiniBoss()) {
+						getLivelloAttuale().getStanzaAttuale().setPosizione(CreatorePartita.RIGA_SCALE, CreatorePartita.COLONNA_SCALE, new ScaleSalita());
+						getLivelloAttuale().getStanzaAttuale().spostaGiocatore(CreatorePartita.RIGA_SCALE+1, CreatorePartita.COLONNA_SCALE+1);
 						livelloAttuale += 1;
 						System.out.println("Sei salito di livello!");
-						getLivelloAttuale().getStanzaAttuale().setPosizione(7, 10, entita);
 						return CASO_DEFAULT;
 					}
 					else {
