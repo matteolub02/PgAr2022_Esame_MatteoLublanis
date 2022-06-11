@@ -1,9 +1,9 @@
 package dijikstra;
 
 public class PassaggioStanzaPrecedente extends Passaggio{
-	private boolean passaAlProssimo = true;
+	private boolean passaAlProssimo = false;
 
-	public boolean isPassaAlProssimo() {
+	public boolean portaAvanti() {
 		return passaAlProssimo;
 	}
 }

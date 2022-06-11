@@ -8,7 +8,7 @@ public class Partita {
 	private static final int ERRORE = -2;
 	private static final int TROVATA_KIBO = 0;
 	private static final int UCCISIONE_MOSTRO = 3;
-	private static final int CASO_PLAYER_CHEST_NON_APERTA = 4;
+	private static final int CASO_PLAYER_CHEST_NON_APERTA_O_PASSAGGIO = 4;
 
 	private static final int CASO_DEFAULT = 1;
 
@@ -58,7 +58,7 @@ public class Partita {
 				}
 			}
 			else {
-				return CASO_PLAYER_CHEST_NON_APERTA;
+				return CASO_PLAYER_CHEST_NON_APERTA_O_PASSAGGIO;
 			}
 			break;
 		case 'M':
@@ -70,7 +70,22 @@ public class Partita {
 			}
 		case 'K':
 			return TROVATA_KIBO;
+		case '-':
+			Passaggio passaggio = (Passaggio)entita;
+			if (passaggio.portaAvanti()) {
+				if (getLivelloAttuale().vaAvantiStanza()) {
+					return CASO_DEFAULT;
+				}
+				else return CASO_PLAYER_CHEST_NON_APERTA_O_PASSAGGIO;
+			}
+			else {
+				if (getLivelloAttuale().tornaStanzaPrecedente()) {
+					return CASO_DEFAULT;
+				}
+				else return CASO_PLAYER_CHEST_NON_APERTA_O_PASSAGGIO;
+			}
 		}
+			
 		return ERRORE;
 	}
 	

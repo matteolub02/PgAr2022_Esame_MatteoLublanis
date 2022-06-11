@@ -21,7 +21,9 @@ public class UIManager {
 			Partita partita = CreatorePartita.casual();
 			inizioPartita(partita);
 			break;
-		case 2: //Legge file XML e fa giocare alla "storia"
+		case 2: //Crea più stanze e più livelli
+			Partita partita2 = CreatorePartita.storia();
+			inizioPartita(partita2);
 			break;
 		case 0:
 			System.out.print("Terminazione.");
@@ -46,7 +48,7 @@ public class UIManager {
 				posizioneGiocatoreSuCesta = partita.getLivelloAttuale().getStanzaAttuale().posizioneDiGiocatore();
 				tmp = entita;
 			}
-		switch (menuScelte.scegliSuMappa()) {
+		switch (Character.toUpperCase(menuScelte.scegliSuMappa())) {
 			case '1':
 				if (partita.getLivelloAttuale().getStanzaAttuale().getGiocatore().stampaInventario()) {
 					MyMenu menuScelteInventario = new MyMenu("", SCELTEINVENTARIO, "Scegli cosa fare:");
@@ -73,7 +75,7 @@ public class UIManager {
 				risultatoSpostamento = partita.checkEntita(entita);
 				break;
 			case 'D':
-				entita =partita.movimento(DESTRA);
+				entita = partita.movimento(DESTRA);
 				risultatoSpostamento = partita.checkEntita(entita);
 				break;
 			case '0':

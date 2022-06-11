@@ -1,9 +1,11 @@
 package dijikstra;
 
-public class Passaggio implements Entita {
+public abstract class Passaggio implements Entita {
 
 	public char charSimbolo() {
-		return '|';
+		return '-';
 	}
+	
+	public abstract boolean portaAvanti();
 
 }
