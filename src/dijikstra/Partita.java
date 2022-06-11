@@ -97,8 +97,9 @@ public class Partita {
 		case 'T':
 			if (livelloAttuale + 1 < CreatorePartita.LIVELLO_FINALE) {
 					if (getGiocatore().isBattutoMiniBoss()) {
-						livelloAttuale -= 1;
-						System.out.println("Sei sceso di livello!");
+						livelloAttuale += 1;
+						System.out.println("Sei salito di livello!");
+						getLivelloAttuale().getStanzaAttuale().setPosizione(7, 10, entita);
 						return CASO_DEFAULT;
 					}
 					else {

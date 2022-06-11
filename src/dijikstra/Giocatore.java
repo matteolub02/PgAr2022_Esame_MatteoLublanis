@@ -12,8 +12,9 @@ public class Giocatore extends EsseriViventi{
 	public Giocatore() {
 		super();
 		setVita(20);
+		setAtk(3000);
 		setNome("Astar");
-		setItemInMano(new Item("Pugni"));
+		setItemInMano(new Arma("Pugni", 3000));
 	}
 	
 	public String toString() {

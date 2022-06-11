@@ -6,6 +6,7 @@ import java.util.Random;
 public class CreatorePartita {
 	public static final int LIVELLO_FINALE = 4;
 	private final static int SIZE_DEFAULT = 15;
+	public final static int RIGA_SCALE = 7, COLONNA_SCALE = 10;
 	public static Partita casual() {
 		Partita partita;
 		Giocatore giocatore = new Giocatore();
@@ -28,7 +29,7 @@ public class CreatorePartita {
 			Random rand = new Random();
 			int numeroStanze = rand.nextInt(5, 8);
 			int stanzaConMiniboss = rand.nextInt(1, numeroStanze);
-			for (int j = 0; j < numeroStanze - 1; j++) {
+			for (int j = 0; j < numeroStanze; j++) {
 				if (j == 0) {
 					Stanza stanza = creaStanzaIniziale(giocatore);
 					stanze.add(stanza);
@@ -56,7 +57,7 @@ public class CreatorePartita {
 		for (int i = 0; i < SIZE_DEFAULT; i++) {
 			for (int j = 0; j < SIZE_DEFAULT; j++) mappa[i][j] = new Vuoto();
 		}
-		mappa[7][10] = new ScaleScesa();
+		mappa[RIGA_SCALE][COLONNA_SCALE] = new ScaleScesa();
 		mappa[0][7] = new PassaggioStanzaSuccessiva();
 		Random rand = new Random();
 		mappa[14][8] = giocatore;
@@ -287,7 +288,7 @@ public class CreatorePartita {
 			for (int j = 0; j < SIZE_DEFAULT; j++) mappa[i][j] = new Vuoto();
 		}
 		mappa[14][7] = new PassaggioStanzaPrecedente();
-		mappa[7][10] = new ScaleSalita();
+		mappa[RIGA_SCALE][COLONNA_SCALE] = new ScaleSalita();
 		Random rand = new Random();
 		mappa[14][8] = giocatore;
 		boolean finito = false;
@@ -331,16 +332,6 @@ public class CreatorePartita {
 				}
 			} while (!finito);
 		}
-		
-		finito = false;
-		ScaleSalita salita = new ScaleSalita();
-		do {
-			int riga = rand.nextInt(0, SIZE_DEFAULT), colonna = rand.nextInt(0, SIZE_DEFAULT);
-			if (checkEmpty(mappa, riga, colonna)) {
-				mappa[riga][colonna] = salita;
-				finito = true;
-			}
-		} while (!finito);
 
 		return new Stanza(mappa, giocatore);
 	}
