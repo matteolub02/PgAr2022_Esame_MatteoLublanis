@@ -20,8 +20,10 @@ public class Livello {
 	}
 	
 	public boolean tornaStanzaPrecedente() {
-		if (stanzaAttuale > 0) {
+		if (stanzaAttuale >= 0) {
 			stanzaAttuale -= 1;
+			getStanzaAttuale().setPosizione(14, 7, new PassaggioStanzaSuccessiva());
+			getStanzaAttuale().spostaGiocatore(14, 8);
 			System.out.println("Stanza precedente!");
 			return true;
 		}
@@ -29,7 +31,9 @@ public class Livello {
 		return false;
 	}
 	public boolean vaAvantiStanza() {
-		if (stanzaAttuale < stanze.size() - 1) {
+		if (stanzaAttuale <= stanze.size() - 1) {
+			getStanzaAttuale().setPosizione(0, 7, new PassaggioStanzaPrecedente());
+			getStanzaAttuale().spostaGiocatore(1, 8);
 			stanzaAttuale += 1;
 			System.out.println("Stanza successiva!");
 			return true;

@@ -6,4 +6,13 @@ public class MiniBoss extends Mostro{
 		setAtk(7);
 		setVita(30);
 	}
+	
+	public String toString() {
+		return ("-------\n"
+				+ "Miniboss: " + getNome() + 
+				"\nVita: " + getVita() + " - ATK: " + getAtk() + " - DEF: " + getDef() 
+				+ "\nOggetto in mano: " + getItemInMano().getStringaDescrittiva() + "\n-------");
+	} 
+	
+	
 }

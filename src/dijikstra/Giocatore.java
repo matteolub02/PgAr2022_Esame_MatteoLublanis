@@ -7,6 +7,7 @@ public class Giocatore extends EsseriViventi{
 	private final static int MAX_ITEM = 6;
 	private ArrayList<Item> inventario = new ArrayList<Item>() ;
 	private Item pugni = new Item("Pugni");
+	private boolean battutoMiniBoss = false;
 	
 	public Giocatore() {
 		super();
@@ -43,7 +44,7 @@ public class Giocatore extends EsseriViventi{
 	}
 	
 	public void usaItem(int numItem) {
-		if (numItem > inventario.size()) {
+		if (numItem > inventario.size() - 1) {
 			System.out.println("Non hai così tanti item!");
 			return;
 		}
@@ -55,13 +56,13 @@ public class Giocatore extends EsseriViventi{
 			setItemInMano(inventario.get(numItem));
 			return;
 		case 'P':
-			usaPozione((Pozione)inventario.get(numItem));
+			usaPozione();
+			inventario.remove(numItem);
 			return;
 		}
 	}
-	public void usaPozione(Pozione pozione) {
-		inventario.remove(pozione);
-		if (getVita() + (int)((1/2)*getVita()) < 20) setVita(getVita() + (int)((1/2)*getVita()));
+	public void usaPozione() {
+		if (getVita() + 10 < 20) setVita(getVita() + 10);
 		else setVita(20);
 	}
 	
@@ -104,5 +105,13 @@ public class Giocatore extends EsseriViventi{
 	public int getPotenzaItemInMano() {
 		if (getItemInMano().simboloItem() == 'A') return ((Arma) getItemInMano()).getPotenza();
 		else return 1;
+	}
+
+	public boolean isBattutoMiniBoss() {
+		return battutoMiniBoss;
+	}
+
+	public void setBattutoMiniBoss(boolean battutoMiniBoss) {
+		this.battutoMiniBoss = battutoMiniBoss;
 	}
 }

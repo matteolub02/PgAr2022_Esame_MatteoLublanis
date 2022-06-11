@@ -84,7 +84,34 @@ public class Partita {
 				}
 				else return CASO_PLAYER_CHEST_NON_APERTA_O_PASSAGGIO;
 			}
+		case 't':
+			if (livelloAttuale > 0) {
+					livelloAttuale -= 1;
+					System.out.println("Sei sceso di livello!");
+					return CASO_DEFAULT;
+			}
+			else {
+				System.out.println("Non ci sono livelli sottostanti!");
+				return CASO_PLAYER_CHEST_NON_APERTA_O_PASSAGGIO;
+			}
+		case 'T':
+			if (livelloAttuale + 1 < CreatorePartita.LIVELLO_FINALE) {
+					if (getGiocatore().isBattutoMiniBoss()) {
+						livelloAttuale -= 1;
+						System.out.println("Sei sceso di livello!");
+						return CASO_DEFAULT;
+					}
+					else {
+						System.out.println("Devi battere il miniboss prima!");
+						return CASO_PLAYER_CHEST_NON_APERTA_O_PASSAGGIO;
+					}
+			}
+			else {
+				System.out.println("Non ci sono altri livelli soprastanti!");
+				return CASO_PLAYER_CHEST_NON_APERTA_O_PASSAGGIO;
+			}
 		}
+		
 			
 		return ERRORE;
 	}
@@ -118,13 +145,15 @@ public class Partita {
 	public boolean faseLotta(Mostro mostro) {
 		int turno = 0; //0 giocatore, 1 mostro
 		boolean finito = false;
-
+		boolean isMiniboss = false;
+		if (mostro.getVita() == 30) isMiniboss = true; 
 		do {
 			switch (turno) {
 			case 0:
 				System.out.println(getGiocatore().getNome() + " colpisce " + mostro.getNome()  + " con " + (getGiocatore().getItemInMano()).getStringaDescrittiva());
 				mostro.riceviDanno(Utils.danno(getGiocatore().getAtk(), getGiocatore().getAtk(), getGiocatore().getPotenzaItemInMano()));
 				if (mostro.getVita() <= 0) {
+					getGiocatore().setBattutoMiniBoss(isMiniboss);
 					return true;
 				}
 				turno = 1;
